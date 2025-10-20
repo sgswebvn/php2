@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>@yield('title', 'Admin - Ecommerce')</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+        body { font-family: 'Arial', sans-serif; background-color: #f4f6f9; }
+        .sidebar { position: fixed; top: 0; left: 0; bottom: 0; width: 250px; background-color: #343a40; color: white; padding-top: 60px; }
+        .sidebar a { color: white; padding: 15px; display: block; text-decoration: none; }
+        .sidebar a:hover { background-color: #495057; }
+        .main-content { margin-left: 250px; padding: 20px; }
+        .topbar { position: fixed; top: 0; left: 250px; right: 0; height: 60px; background-color: white; box-shadow: 0 2px 4px rgba(0,0,0,0.1); padding: 10px; z-index: 1000; }
+        .breadcrumb { background-color: #e9ecef; padding: 10px; border-radius: 5px; }
+        .card { box-shadow: 0 4px 8px rgba(0,0,0,0.1); border-radius: 10px; }
+        .table { border-radius: 10px; overflow: hidden; }
+        .table thead { background-color: #343a40; color: white; }
+    </style>
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <a href="/admin"><i class="bi bi-house-door-fill me-2"></i> Dashboard</a>
+        <a href="/admin/categories"><i class="bi bi-tags-fill me-2"></i> Danh Mục</a>
+        <a href="/admin/products"><i class="bi bi-box-seam-fill me-2"></i> Sản Phẩm</a>
+        <a href="/admin/users"><i class="bi bi-people-fill me-2"></i> Người Dùng</a>
+        <a href="/admin/orders"><i class="bi bi-cart-fill me-2"></i> Đơn Hàng</a>
+        <a href="/auth/logout"><i class="bi bi-box-arrow-right me-2"></i> Đăng Xuất</a>
+    </div>
+
+    <!-- Topbar -->
+    <div class="topbar d-flex justify-content-between align-items-center">
+        <h5 class="mb-0">Admin Panel</h5>
+        <div>
+            <span>Xin chào, {{ $_SESSION['user']['name'] }} (Admin)</span>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content mt-5">
+        <!-- Breadcrumb -->
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                @yield('breadcrumb')
+            </ol>
+        </nav>
+
+        <!-- Content -->
+        @yield('content')
+    </div>
+
+    <!-- Footer -->
+    <footer class="text-center py-3 mt-5 bg-white shadow" style="margin-left: 250px;">
+        <p>&copy; 2025 Admin Ecommerce. All rights reserved.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>
